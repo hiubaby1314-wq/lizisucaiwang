@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="0">
+<title>栗子素材网</title>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--primary:#409EFF;--primary-light:#ecf5ff;--primary-dark:#337ecc;--red:#E60000;--bg:#F9F9F9;--text:#4B5563;--text-light:#909399;--border:#e4e7ed;--card-bg:#fff;--font:"Helvetica Neue",Helvetica,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",Arial,sans-serif}
+html{font-size:14px;scroll-behavior:smooth}
+body{font-family:var(--font);background:var(--bg);color:var(--text);line-height:1.6;-webkit-font-smoothing:antialiased}
+a{text-decoration:none;color:inherit}button{font-family:var(--font);cursor:pointer;border:none;outline:none}
+input,textarea,select{font-family:var(--font);outline:none}img{display:block;max-width:100%}
+::-webkit-scrollbar{width:6px;height:6px}::-webkit-scrollbar-thumb{background:#c1c1c1;border-radius:3px}
+.nav{position:sticky;top:0;z-index:100;background:#fff;box-shadow:0 1px 4px rgba(0,0,0,.06);display:flex;align-items:center;padding:0 24px;height:60px;gap:8px}
+.nav-logo{display:flex;align-items:center;gap:10px;flex-shrink:0}
+.nav-logo-img{width:40px;height:40px;border-radius:8px;background:linear-gradient(135deg,#409EFF,#79bbff);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:18px}
+.nav-logo-text{font-size:18px;font-weight:700;color:var(--primary);white-space:nowrap}
+.nav-links{display:flex;align-items:center;gap:4px;margin-left:auto}
+.nav-links a{padding:6px 10px;border-radius:4px;font-size:13px;color:var(--text);white-space:nowrap;transition:all .2s;cursor:pointer}
+.nav-links a:hover{color:var(--primary);background:var(--primary-light)}
+.nav-login{margin-left:8px;flex-shrink:0;padding:8px 22px;border-radius:20px;background:var(--primary);color:#fff;font-size:13px;font-weight:500;transition:all .25s}
+.nav-login:hover{background:var(--primary-dark);transform:translateY(-1px);box-shadow:0 4px 12px rgba(64,158,255,.35)}
+.nav-login.logged-in{background:#10b981}.nav-login.logged-in:hover{background:#059669}
+.carousel-wrap{position:relative;width:100%;overflow:hidden;height:340px;background:#1a1a2e}
+.carousel-track{display:flex;height:100%;transition:transform .6s cubic-bezier(.4,0,.2,1)}
+.carousel-slide{min-width:100%;height:100%}.carousel-slide-inner{width:100%;height:100%}
+.carousel-notice{position:absolute;bottom:0;left:0;right:0;background:linear-gradient(transparent,rgba(0,0,0,.65));padding:28px 32px 16px;color:rgba(255,255,255,.88);font-size:13px}
+.carousel-dots{position:absolute;bottom:52px;left:50%;transform:translateX(-50%);display:flex;gap:8px}
+.carousel-dot{width:24px;height:4px;border-radius:2px;background:rgba(255,255,255,.35);cursor:pointer;transition:all .3s}
+.carousel-dot.active{background:#fff;width:32px}
+.carousel-arrows{position:absolute;top:50%;width:100%;display:flex;justify-content:space-between;transform:translateY(-50%);padding:0 12px;pointer-events:none}
+.carousel-arrow{pointer-events:all;width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,.15);backdrop-filter:blur(4px);border:1px solid rgba(255,255,255,.1);display:flex;align-items:center;justify-content:center;color:#fff;font-size:18px;cursor:pointer;transition:all .25s;opacity:0}
+.carousel-wrap:hover .carousel-arrow{opacity:1}.carousel-arrow:hover{background:rgba(255,255,255,.3)}
+.main-content{max-width:1280px;margin:0 auto;padding:20px 24px 40px}
+.categories{display:flex;flex-wrap:wrap;gap:10px;padding:16px 0;border-bottom:1px solid var(--border)}
+.cat-btn{padding:7px 18px;border-radius:20px;font-size:13px;background:var(--card-bg);color:var(--text);border:1px solid var(--border);transition:all .25s;cursor:pointer}
+.cat-btn:hover{border-color:var(--primary);color:var(--primary)}.cat-btn.active{background:var(--primary);color:#fff;border-color:var(--primary)}
+.sub-bar{display:flex;align-items:center;justify-content:space-between;padding:14px 0;gap:16px;flex-wrap:wrap}
+.sub-tabs{display:flex;gap:6px}
+.sub-tab{padding:6px 16px;border-radius:4px;font-size:13px;background:transparent;color:var(--text-light);cursor:pointer;transition:all .2s}
+.sub-tab:hover{color:var(--primary)}.sub-tab.active{background:var(--primary);color:#fff;border-radius:20px}
+.search-box{display:flex;gap:0;height:34px}
+.search-input{width:200px;padding:0 12px;border:1px solid var(--border);border-radius:4px 0 0 4px;font-size:13px;color:var(--text);background:#fff}
+.search-input:focus{border-color:var(--primary)}.search-input::placeholder{color:#c0c4cc}
+.search-btn{padding:0 16px;background:var(--primary);color:#fff;border-radius:0 4px 4px 0;font-size:13px}
+.search-btn:hover{background:var(--primary-dark)}
+.card-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:18px;padding:8px 0 24px}
+.card{background:var(--card-bg);border-radius:6px;overflow:hidden;box-shadow:0 1px 4px rgba(0,0,0,.06);transition:all .3s cubic-bezier(.4,0,.2,1);cursor:pointer;position:relative;animation:fadeUp .5s ease both}
+.card:hover{transform:translateY(-4px);box-shadow:0 8px 24px rgba(0,0,0,.12)}
+.card-img{width:100%;aspect-ratio:3/4;position:relative;overflow:hidden}
+.card-img-inner{width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:42px;font-weight:800;color:rgba(255,255,255,.18);transition:transform .4s}
+.card:hover .card-img-inner{transform:scale(1.05)}
+.card-badge{position:absolute;top:10px;left:10px;z-index:2;display:flex;gap:6px}
+.badge{padding:2px 8px;border-radius:3px;font-size:11px;font-weight:600;backdrop-filter:blur(4px)}
+.badge-copy{background:rgba(230,0,0,.85);color:#fff}.badge-new{background:rgba(64,158,255,.9);color:#fff}
+.card-files{display:flex;gap:4px;padding:4px 14px 8px;flex-wrap:wrap}
+.file-tag{font-size:10px;padding:1px 6px;border-radius:3px;background:#f0f0f0;color:var(--text-light)}.file-tag.fla{background:#fff3e0;color:#e65100}
+.card-footer{padding:10px 14px;display:flex;align-items:center;justify-content:space-between;border-top:1px solid var(--border)}
+.card-name{font-size:14px;font-weight:600;color:var(--text)}
+.card-preview{font-size:12px;color:var(--primary);cursor:pointer;display:flex;align-items:center;gap:4px}
+.card-admin-actions{display:none;position:absolute;top:8px;right:8px;z-index:6;flex-direction:column;gap:4px}
+.admin-mode .card-admin-actions{display:flex}
+.card-admin-btn{width:26px;height:26px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;cursor:pointer;backdrop-filter:blur(4px)}
+.card-admin-btn.edit-btn{background:rgba(64,158,255,.85);color:#fff}.card-admin-btn.del-btn{background:rgba(230,0,0,.75);color:#fff}
+.admin-panel{display:none;background:#fff;border-radius:8px;padding:24px;margin-bottom:20px;box-shadow:0 1px 4px rgba(0,0,0,.06)}
+.admin-panel.show{display:block}.admin-panel h3{font-size:16px;margin-bottom:16px}
+.admin-row{display:flex;gap:8px;flex-wrap:wrap;align-items:flex-end}
+.admin-row .modal-field{margin-bottom:0;flex:1;min-width:140px}.admin-row .modal-field input{height:34px;font-size:13px}
+.admin-add-btn{height:34px;padding:0 18px;border-radius:6px;background:var(--primary);color:#fff;font-size:13px;white-space:nowrap}
+.admin-add-btn:hover{background:var(--primary-dark)}
+.admin-msg{font-size:12px;margin-top:8px;min-height:16px}.admin-msg.success{color:#10b981}.admin-msg.error{color:var(--red)}
+.admin-user-list{margin-top:12px;font-size:13px;color:var(--text-light)}
+.admin-user-list span{display:inline-flex;align-items:center;padding:2px 10px;margin:3px 4px;background:var(--primary-light);border-radius:12px;color:var(--primary);font-size:12px}
+.admin-toolbar{display:none;align-items:center;gap:10px;margin-bottom:16px;padding:12px 16px;background:#fff;border-radius:8px;box-shadow:0 1px 4px rgba(0,0,0,.06)}
+.admin-toolbar.show{display:flex}
+.admin-toolbar-btn{padding:6px 14px;border-radius:6px;font-size:13px;cursor:pointer;border:1px solid var(--border);background:#fff;color:var(--text)}
+.admin-toolbar-btn:hover{border-color:var(--primary);color:var(--primary)}
+.admin-toolbar-btn.active{background:var(--primary);color:#fff;border-color:var(--primary)}
+.admin-toolbar-btn.add-btn{background:#10b981;color:#fff;border-color:#10b981}.admin-toolbar-btn.add-btn:hover{background:#059669}
+.download-lock{position:absolute;inset:0;z-index:5;background:rgba(0,0,0,.5);backdrop-filter:blur(2px);display:flex;flex-direction:column;align-items:center;justify-content:center;opacity:0;transition:opacity .3s;pointer-events:none;border-radius:6px}
+.card:hover .download-lock{opacity:1;pointer-events:all}
+.download-lock-icon{font-size:28px;color:#fff;margin-bottom:6px}.download-lock-text{font-size:12px;color:rgba(255,255,255,.9)}
+.download-lock-btn{margin-top:8px;padding:5px 14px;border-radius:12px;background:var(--primary);color:#fff;font-size:11px}
+.modal-overlay{display:none;position:fixed;inset:0;z-index:1000;background:rgba(0,0,0,.45);backdrop-filter:blur(3px);align-items:center;justify-content:center}
+.modal-overlay.show{display:flex}
+.modal{background:#fff;border-radius:12px;padding:32px;width:90%;max-width:400px;position:relative;box-shadow:0 20px 60px rgba(0,0,0,.2);animation:modalIn .25s ease}
+@keyframes modalIn{from{opacity:0;transform:scale(.95) translateY(10px)}to{opacity:1;transform:scale(1) translateY(0)}}
+.modal-close{position:absolute;top:12px;right:16px;font-size:22px;color:#999;cursor:pointer}.modal-close:hover{color:#333}
+.modal h3{font-size:18px;margin-bottom:20px}.modal-field{margin-bottom:14px}
+.modal-field label{display:block;font-size:13px;color:var(--text-light);margin-bottom:4px}
+.modal-field input,.modal-field select{width:100%;height:38px;padding:0 12px;border:1px solid var(--border);border-radius:6px;font-size:14px;color:var(--text);background:#fff}
+.modal-field input:focus,.modal-field select:focus{border-color:var(--primary)}
+.modal-submit{width:100%;height:40px;border-radius:20px;background:var(--primary);color:#fff;font-size:14px;font-weight:500;margin-top:8px}
+.modal-submit:hover{background:var(--primary-dark)}
+.modal-msg{font-size:12px;color:var(--red);margin-top:8px;min-height:16px}
+.modal-info{font-size:12px;color:var(--text-light);margin-top:12px;text-align:center}
+.modal-wide{max-width:480px}.modal-field-row{display:flex;gap:10px}.modal-field-row .modal-field{flex:1}
+.checkbox-row{display:flex;align-items:center;gap:8px;margin-top:4px}
+.checkbox-row input[type=checkbox]{width:16px;height:16px;cursor:pointer}.checkbox-row label{font-size:13px;cursor:pointer}
+.file-upload-input{width:100%;padding:8px;margin-top:4px;border:1px dashed var(--border);border-radius:6px;font-size:13px;cursor:pointer;background:#fafafa}
+.file-upload-input:hover{border-color:var(--primary)}
+.upload-preview{margin-top:6px;display:flex;gap:6px;flex-wrap:wrap}.upload-preview img{max-height:70px;border-radius:4px;border:1px solid var(--border)}
+.upload-status{margin-top:4px;font-size:12px;color:var(--text-light)}.upload-status.success{color:#10b981}
+.upload-status .fla-icon{display:inline-block;padding:2px 6px;border-radius:3px;background:#fff3e0;color:#e65100;font-size:11px;font-weight:600}
+.pagination-wrap{display:flex;align-items:center;justify-content:center;gap:8px;padding:20px 0}
+.page-total{font-size:13px;color:var(--text-light)}
+.footer{background:#fff;border-top:1px solid var(--border);padding:24px;text-align:center}
+.preview-overlay{display:none;position:fixed;inset:0;z-index:2000;background:rgba(0,0,0,.85);backdrop-filter:blur(6px);flex-direction:column;align-items:center;justify-content:center}
+.preview-overlay.show{display:flex}
+.preview-close{position:absolute;top:16px;right:24px;font-size:32px;color:#fff;cursor:pointer;z-index:2001;opacity:.7;transition:opacity .2s}
+.preview-close:hover{opacity:1}
+.preview-title{color:#fff;font-size:18px;font-weight:600;margin-bottom:16px;text-align:center}
+.preview-main{display:flex;align-items:center;justify-content:center;max-width:90vw;max-height:70vh;position:relative}
+.preview-main img{max-width:90vw;max-height:70vh;object-fit:contain;border-radius:8px;box-shadow:0 8px 40px rgba(0,0,0,.4)}
+.preview-thumbs{display:flex;gap:10px;margin-top:16px;justify-content:center;flex-wrap:wrap}
+.preview-thumb{width:64px;height:64px;border-radius:6px;overflow:hidden;cursor:pointer;border:2px solid transparent;transition:all .2s;opacity:.6}
+.preview-thumb:hover,.preview-thumb.active{border-color:var(--primary);opacity:1}
+.preview-thumb img{width:100%;height:100%;object-fit:cover}
+.preview-files{display:flex;gap:8px;margin-top:12px;justify-content:center}
+.preview-file-tag{padding:4px 12px;border-radius:4px;font-size:12px;color:#fff;background:rgba(255,255,255,.15)}
+.preview-file-tag.fla{background:rgba(230,81,0,.7)}
+.preview-dl-area{display:flex;gap:10px;margin-top:16px;justify-content:center;flex-wrap:wrap}
+.preview-dl-btn{padding:8px 20px;border-radius:20px;background:var(--primary);color:#fff;font-size:13px;font-weight:500;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:6px;transition:all .25s;border:none}
+.preview-dl-btn:hover{background:var(--primary-dark);transform:translateY(-1px);box-shadow:0 4px 12px rgba(64,158,255,.35)}
+.preview-dl-btn.fla-dl{background:#e65100}.preview-dl-btn.fla-dl:hover{background:#bf360c}
+.preview-login-hint{color:rgba(255,255,255,.7);font-size:13px;margin-top:16px;text-align:center}
+.footer-links{display:flex;justify-content:center;gap:16px;margin-bottom:12px}
+.footer-links a{font-size:13px;color:var(--text-light)}.footer-links a:hover{color:var(--primary)}
+.footer-copy{font-size:12px;color:#b0b0b0}.footer-copy a{color:var(--primary);margin-left:8px}
+@media(max-width:900px){.nav-links{display:none}.carousel-wrap{height:220px}.card-grid{grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:12px}}
+@media(max-width:600px){.nav{padding:0 12px}.main-content{padding:12px 12px 30px}.carousel-wrap{height:180px}.card-grid{grid-template-columns:repeat(2,1fr);gap:10px}.sub-bar{flex-direction:column;align-items:flex-start}.search-box{width:100%}.search-input{flex:1}}
+@keyframes fadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+</style>
+</head>
+<body>
+<nav class="nav">
+<div class="nav-logo"><div class="nav-logo-img">栗</div><span class="nav-logo-text">栗子素材网</span></div>
+<div class="nav-links"><a onclick="openModal('requestModal')">素材需求</a></div>
+<button class="nav-login" id="navAuthBtn" onclick="onAuthClick()">登录</button>
+</nav>
+<section class="carousel-wrap">
+<div class="carousel-track" id="carouselTrack">
+<div class="carousel-slide"><div class="carousel-slide-inner" style="background:linear-gradient(135deg,#0f0c29,#302b63,#24243e)"></div></div>
+<div class="carousel-slide"><div class="carousel-slide-inner" style="background:linear-gradient(135deg,#1a1a2e,#16213e,#0f3460)"></div></div>
+<div class="carousel-slide"><div class="carousel-slide-inner" style="background:linear-gradient(135deg,#0d1b2a,#1b263b,#415a77)"></div></div>
+</div>
+<div class="carousel-notice">栗子素材美术版权均已注册，未经允许禁止二次传播或出售，一经发现，后果自负，欢迎各大博主合作推广。</div>
+<div class="carousel-dots"><div class="carousel-dot active" data-i="0"></div><div class="carousel-dot" data-i="1"></div><div class="carousel-dot" data-i="2"></div></div>
+<div class="carousel-arrows"><div class="carousel-arrow" onclick="cGo(cCur-1)">&#8249;</div><div class="carousel-arrow" onclick="cGo(cCur+1)">&#8250;</div></div>
+</section>
+<main class="main-content">
+<div class="admin-panel" id="adminPanel">
+<h3>管理员面板 — 账号管理</h3>
+<p style="font-size:12px;color:var(--text-light);margin-bottom:12px">仅管理员可新增账号，默认密码 123456，登录后可自行修改。</p>
+<div class="admin-row">
+<div class="modal-field"><label>新用户名</label><input type="text" id="adminNewUser" placeholder="输入用户名"></div>
+<button class="admin-add-btn" onclick="adminAddUser()">新增账号</button>
+</div>
+<div class="admin-msg" id="adminMsg"></div>
+<div class="admin-user-list" id="adminUserList"></div>
+</div>
+<section class="categories" id="categories">
+<button class="cat-btn" data-cat="经典修仙">经典修仙</button><button class="cat-btn active" data-cat="现代都市">现代都市</button>
+<button class="cat-btn" data-cat="玄幻修仙">玄幻修仙</button><button class="cat-btn" data-cat="诡异末世">诡异末世</button>
+<button class="cat-btn" data-cat="历史朝代">历史朝代</button><button class="cat-btn" data-cat="怪物异兽">怪物异兽</button>
+<button class="cat-btn" data-cat="画师寄售">画师寄售</button><button class="cat-btn" data-cat="背景图">背景图</button>
+<button class="cat-btn" data-cat="表情包">表情包</button><button class="cat-btn" data-cat="道具栏">道具栏</button>
+<button class="cat-btn" data-cat="音效">音效</button><button class="cat-btn" data-cat="特效">特效</button>
+</section>
+<section class="sub-bar">
+<div class="sub-tabs"><button class="sub-tab active">全部</button><button class="sub-tab">修仙男</button><button class="sub-tab">修仙女</button></div>
+<div class="search-box"><input class="search-input" type="text" placeholder="搜索" id="searchInput"><button class="search-btn" onclick="renderCards()">搜索</button></div>
+</section>
+<div class="admin-toolbar" id="adminToolbar">
+<button class="admin-toolbar-btn add-btn" onclick="openAddItem()">+ 新增素材</button>
+<button class="admin-toolbar-btn" id="editModeBtn" onclick="toggleEditMode()">编辑模式</button>
+<span style="font-size:12px;color:var(--text-light);margin-left:auto">管理员新增/编辑的素材会永久保存</span>
+</div>
+<section class="card-grid" id="cardGrid"></section>
+<section class="pagination-wrap"><span class="page-total" id="pageTotal"></span></section>
+</main>
+<footer class="footer">
+<div class="footer-links"><a href="#">素材需求</a></div>
+<div class="footer-copy">Copyright &copy; 2024 栗子素材网 <a href="https://beian.miit.gov.cn/" target="_blank">皖ICP备2024038848号</a></div>
+</footer>
+<div class="modal-overlay" id="loginModal"><div class="modal"><span class="modal-close" onclick="closeModal('loginModal')">&times;</span>
+<h3>用户登录</h3>
+<div class="modal-field"><label>用户名</label><input type="text" id="loginUser" placeholder="请输入用户名"></div>
+<div class="modal-field"><label>密码</label><input type="password" id="loginPass" placeholder="请输入密码"></div>
+<button class="modal-submit" onclick="doLogin()">登录</button>
+<div class="modal-msg" id="loginMsg"></div>
+<div class="modal-info">账号由管理员分配（默认密码: 123456），登录后可自行修改</div>
+</div></div>
+<div class="modal-overlay" id="changePwdModal"><div class="modal"><span class="modal-close" onclick="closeModal('changePwdModal')">&times;</span>
+<h3>修改密码</h3>
+<div class="modal-field"><label>当前密码</label><input type="password" id="oldPwd"></div>
+<div class="modal-field"><label>新密码</label><input type="password" id="newPwd" placeholder="至少4位"></div>
+<div class="modal-field"><label>确认新密码</label><input type="password" id="confirmPwd"></div>
+<button class="modal-submit" onclick="doChangePwd()">确认修改</button>
+<div class="modal-msg" id="changePwdMsg"></div>
+</div></div>
+<div class="modal-overlay" id="requestModal"><div class="modal modal-wide"><span class="modal-close" onclick="closeModal('requestModal')">&times;</span>
+<h3>素材需求提交</h3>
+<div class="modal-field"><label>需求描述</label><textarea id="requestDesc" rows="4" placeholder="描述您需要的素材..." style="width:100%;padding:10px;border:1px solid var(--border);border-radius:6px;font-size:14px;resize:vertical"></textarea></div>
+<div class="modal-field"><label>参考图片（最多5张）</label><input type="file" id="reqImg" accept="image/*" multiple class="file-upload-input"><div class="upload-preview" id="reqPrev"></div></div>
+<div class="modal-field"><label>联系方式</label><input type="text" id="requestContact" placeholder="微信 / QQ / 手机号"></div>
+<button class="modal-submit" onclick="doRequest()">提交需求</button>
+<div class="modal-msg" id="requestMsg"></div>
+</div></div>
+<div class="modal-overlay" id="editModal"><div class="modal modal-wide"><span class="modal-close" onclick="closeModal('editModal')">&times;</span>
+<h3 id="editModalTitle">编辑素材</h3>
+<div class="modal-field"><label>素材名称</label><input type="text" id="editName" placeholder="输入名称"></div>
+<div class="modal-field-row">
+<div class="modal-field"><label>分类</label><select id="editCat"><option>经典修仙</option><option>现代都市</option><option>玄幻修仙</option><option>诡异末世</option><option>历史朝代</option><option>怪物异兽</option><option>画师寄售</option><option>背景图</option><option>表情包</option><option>道具栏</option><option>音效</option><option>特效</option></select></div>
+<div class="modal-field"><label>文件格式（逗号分隔）</label><input type="text" id="editFiles" placeholder="png,psd,fla"></div>
+</div>
+<div class="modal-field"><label>上传封面图片（最多5张，逐张添加）</label>
+<div style="display:flex;gap:8px;align-items:center;margin-top:4px"><input type="file" id="editImgUp" accept="image/*" class="file-upload-input" style="flex:1"><button type="button" class="admin-add-btn" onclick="addOneImg()">添加</button></div>
+<div class="upload-preview" id="editImgPrev"></div><div id="editImgCt" style="font-size:11px;color:var(--text-light);margin-top:4px"></div></div>
+<div class="modal-field"><label>上传 FLA 文件</label><input type="file" id="editFla" accept=".fla" class="file-upload-input"><div class="upload-status" id="editFlaSt"></div></div>
+<div class="checkbox-row"><input type="checkbox" id="editIsNew"><label for="editIsNew">标记为 NEW</label></div>
+<button class="modal-submit" onclick="doSaveItem()">保存</button>
+<div class="modal-msg" id="editMsg"></div>
+</div></div>
+<div class="preview-overlay" id="previewOverlay" onclick="if(event.target===this)closePreview()">
+<span class="preview-close" onclick="closePreview()">&times;</span>
+<div class="preview-title" id="previewTitle"></div>
+<div class="preview-main"><img id="previewMainImg" src=""></div>
+<div class="preview-thumbs" id="previewThumbs"></div>
+<div class="preview-files" id="previewFiles"></div>
+<div class="preview-dl-area" id="previewDlArea"></div>
+</div>
+<script>
+// === STATE ===
+let characters=[], currentUser=null, currentCat='现代都市';
+let editMode=false, editingId=null, upImgs=[], upFla=null, cCur=0, cTimer=null;
+
+// === SESSION ===
+function getSess(){try{return JSON.parse(sessionStorage.getItem('lz_cur'))}catch(e){return null}}
+function setSess(u){if(u)sessionStorage.setItem('lz_cur',JSON.stringify(u));else sessionStorage.removeItem('lz_cur');}
+
+// === MODAL ===
+function openModal(id){document.getElementById(id).classList.add('show');}
+function closeModal(id){document.getElementById(id).classList.remove('show');}
+document.querySelectorAll('.modal-overlay').forEach(m=>m.addEventListener('click',e=>{if(e.target===e.currentTarget)m.classList.remove('show');}));
+
+// === AUTH ===
+function updateUI(){
+  const btn=document.getElementById('navAuthBtn'),ap=document.getElementById('adminPanel'),at=document.getElementById('adminToolbar');
+  if(currentUser){btn.textContent=currentUser.username;btn.classList.add('logged-in');
+    if(currentUser.role==='admin'){ap.classList.add('show');at.classList.add('show');renderUsers();}
+    else{ap.classList.remove('show');at.classList.remove('show');document.getElementById('cardGrid').classList.remove('admin-mode');}
+  }else{btn.textContent='登录';btn.classList.remove('logged-in');ap.classList.remove('show');at.classList.remove('show');}
+}
+function onAuthClick(){
+  if(currentUser){const c=prompt(`当前: ${currentUser.username}${currentUser.role==='admin'?' (管理员)':''}\n\n1 修改密码\n2 退出登录`);
+    if(c==='1')openModal('changePwdModal');else if(c==='2'){currentUser=null;setSess(null);updateUI();renderCards();}
+  }else openModal('loginModal');
+}
+async function doLogin(){
+  const u=document.getElementById('loginUser').value.trim(),p=document.getElementById('loginPass').value,msg=document.getElementById('loginMsg');
+  if(!u||!p){msg.textContent='请输入用户名和密码';return;}
+  const res=await fetch('/api/login',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({username:u,password:p})});
+  const data=await res.json();
+  if(!data.ok){msg.textContent=data.msg;msg.style.color='var(--red)';return;}
+  currentUser=data.user;setSess(currentUser);closeModal('loginModal');updateUI();renderCards();
+}
+async function doChangePwd(){
+  const o=document.getElementById('oldPwd').value,n=document.getElementById('newPwd').value,c=document.getElementById('confirmPwd').value,msg=document.getElementById('changePwdMsg');
+  if(!o){msg.textContent='请输入当前密码';msg.style.color='var(--red)';return;}
+  if(!n||n.length<4){msg.textContent='新密码至少4位';msg.style.color='var(--red)';return;}
+  if(n!==c){msg.textContent='两次密码不一致';msg.style.color='var(--red)';return;}
+  const res=await fetch('/api/users',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({action:'changepwd',username:currentUser.username,oldPassword:o,newPassword:n})});
+  const data=await res.json();
+  if(!data.ok){msg.textContent=data.msg;msg.style.color='var(--red)';return;}
+  msg.textContent='修改成功！';msg.style.color='#10b981';setTimeout(()=>closeModal('changePwdModal'),800);
+}
+
+// === USERS ===
+async function renderUsers(){
+  const res=await fetch('/api/users?adminUser='+encodeURIComponent(currentUser.username));
+  const data=await res.json();
+  if(!data.ok)return;
+  document.getElementById('adminUserList').innerHTML='<strong>已有账号：</strong>'+data.users.map(u=>
+    `<span>${u.username}${u.role==='admin'?' (管理员)':''}${u.role!=='admin'?` <a href="#" onclick="delUser('${u.username}');return false" style="color:var(--red);margin-left:4px;font-size:11px">&times;</a>`:''}</span>`).join('');
+}
+async function adminAddUser(){
+  const u=document.getElementById('adminNewUser').value.trim(),msg=document.getElementById('adminMsg');
+  if(!u||u.length<2){msg.textContent='用户名至少2个字符';msg.className='admin-msg error';return;}
+  const res=await fetch('/api/users',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({action:'add',username:u,adminUser:currentUser.username})});
+  const data=await res.json();
+  if(!data.ok){msg.textContent=data.msg;msg.className='admin-msg error';return;}
+  msg.textContent='账号 "'+u+'" 创建成功！默认密码: 123456';msg.className='admin-msg success';
+  document.getElementById('adminNewUser').value='';renderUsers();
+}
+async function delUser(name){
+  if(!confirm('确认删除账号「'+name+'」？'))return;
+  await fetch('/api/users',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({action:'delete',username:name,adminUser:currentUser.username})});
+  renderUsers();
+  const msg=document.getElementById('adminMsg');msg.textContent='已删除';msg.className='admin-msg success';
+}
+
+// === PREVIEW LIGHTBOX ===
+function openPreview(id){
+  const c=characters.find(x=>x.id===id);if(!c)return;
+  const overlay=document.getElementById('previewOverlay');
+  document.getElementById('previewTitle').textContent=c.name;
+  let allImgs=[];
+  if(c.img)allImgs.push(c.img);
+  if(c.imgs){c.imgs.forEach(im=>{if(im&&!allImgs.includes(im))allImgs.push(im);});}
+  const mainImg=document.getElementById('previewMainImg');
+  if(allImgs.length===0&&c.grad){
+    mainImg.style.display='none';
+    mainImg.parentElement.innerHTML='<div style="width:300px;height:400px;border-radius:8px;background:'+c.grad+';display:flex;align-items:center;justify-content:center;font-size:64px;color:rgba(255,255,255,.2)">'+c.name.charAt(0)+'</div>';
+  } else if(allImgs.length>0){
+    mainImg.style.display='';mainImg.src=allImgs[0];
+  }
+  const thumbsEl=document.getElementById('previewThumbs');
+  if(allImgs.length>1){
+    thumbsEl.innerHTML=allImgs.map((im,i)=>`<div class="preview-thumb${i===0?' active':''}" onclick="switchPreview('${im}',this)"><img src="${im}"></div>`).join('');
+  } else {thumbsEl.innerHTML='';}
+  const filesEl=document.getElementById('previewFiles');
+  filesEl.innerHTML=(c.files||[]).map(f=>`<span class="preview-file-tag${f==='fla'?' fla':''}">.${f}</span>`).join('');
+  const dlArea=document.getElementById('previewDlArea');
+  if(currentUser){
+    let btns='';
+    if(c.fla){btns+=`<a class="preview-dl-btn fla-dl" href="${c.fla}" download="${c.name}.fla">&#11015; 下载FLA源文件</a>`;}
+    dlArea.innerHTML=btns||'<div class="preview-login-hint">该素材暂无FLA文件</div>';
+  } else {
+    dlArea.innerHTML='<div class="preview-login-hint">&#128274; 登录后即可下载素材 <button onclick="closePreview();openModal(\'loginModal\')" style="margin-left:8px;padding:4px 14px;border-radius:12px;background:var(--primary);color:#fff;font-size:12px;border:none;cursor:pointer">立即登录</button></div>';
+  }
+  overlay.classList.add('show');document.body.style.overflow='hidden';
+}
+function switchPreview(src,el){
+  document.getElementById('previewMainImg').src=src;
+  document.querySelectorAll('.preview-thumb').forEach(t=>t.classList.remove('active'));
+  el.classList.add('active');
+}
+function closePreview(){
+  document.getElementById('previewOverlay').classList.remove('show');document.body.style.overflow='';
+  // restore main img element in case it was replaced
+  const pm=document.querySelector('.preview-main');
+  if(!document.getElementById('previewMainImg')){pm.innerHTML='<img id="previewMainImg" src="">';}
+}
+
+// === RENDER CARDS ===
+function renderCards(){
+  const grid=document.getElementById('cardGrid'),loggedIn=!!currentUser;
+  const q=(document.getElementById('searchInput').value||'').trim().toLowerCase();
+  const filtered=characters.filter(c=>c.cat===currentCat&&(!q||c.name.toLowerCase().includes(q)));
+  grid.innerHTML=filtered.map((c,i)=>`<div class="card" style="animation-delay:${i*.02}s" onclick="openPreview(${c.id})">
+    <div class="card-img">
+      <div class="card-badge"><span class="badge badge-copy">版权</span>${c.isNew?'<span class="badge badge-new">new</span>':''}</div>
+      <div class="card-admin-actions"><button class="card-admin-btn edit-btn" onclick="event.stopPropagation();openEditItem(${c.id})">&#9998;</button><button class="card-admin-btn del-btn" onclick="event.stopPropagation();delItem(${c.id})">&#10005;</button></div>
+      ${c.img?`<div class="card-img-inner" style="background:#f5f5f5"><img src="${c.img}" style="width:100%;height:100%;object-fit:cover" onerror="this.parentElement.style.background='${c.grad}';this.remove()"></div>`
+            :`<div class="card-img-inner" style="background:${c.grad}">${c.name.charAt(0)}</div>`}
+      ${!loggedIn?`<div class="download-lock"><div class="download-lock-icon">&#128274;</div><div class="download-lock-text">登录后下载素材</div><button class="download-lock-btn" onclick="event.stopPropagation();openModal('loginModal')">立即登录</button></div>`:''}
+    </div>
+    <div class="card-files">${(c.files||[]).map(f=>`<span class="file-tag${f==='fla'?' fla':''}">.${f}</span>`).join('')}</div>
+    <div class="card-footer"><span class="card-name">${c.name}</span>
+      <span class="card-preview" onclick="event.stopPropagation();openPreview(${c.id})">预览 &#9654;</span>
+    </div></div>`).join('');
+  document.getElementById('pageTotal').textContent='共 '+filtered.length+' 条';
+}
+
+// === EDIT/ADD ===
+function toggleEditMode(){editMode=!editMode;document.getElementById('cardGrid').classList.toggle('admin-mode',editMode);
+  document.getElementById('editModeBtn').classList.toggle('active',editMode);document.getElementById('editModeBtn').textContent=editMode?'退出编辑':'编辑模式';}
+function resetEdit(){upImgs=[];upFla=null;document.getElementById('editImgUp').value='';document.getElementById('editFla').value='';
+  document.getElementById('editFlaSt').innerHTML='';renderImgPrev();}
+function openAddItem(){editingId=null;resetEdit();document.getElementById('editModalTitle').textContent='新增素材';
+  document.getElementById('editName').value='';document.getElementById('editCat').value=currentCat;
+  document.getElementById('editFiles').value='png';document.getElementById('editIsNew').checked=true;
+  document.getElementById('editMsg').textContent='';openModal('editModal');}
+function openEditItem(id){const c=characters.find(x=>x.id===id);if(!c)return;editingId=id;resetEdit();
+  document.getElementById('editModalTitle').textContent='编辑素材';document.getElementById('editName').value=c.name;
+  document.getElementById('editCat').value=c.cat;document.getElementById('editFiles').value=(c.files||[]).join(',');
+  document.getElementById('editIsNew').checked=c.isNew;document.getElementById('editMsg').textContent='';openModal('editModal');}
+function addOneImg(){
+  const input=document.getElementById('editImgUp'),file=input.files[0];
+  if(!file){document.getElementById('editImgCt').innerHTML='<span style="color:var(--red)">请先选择图片</span>';return;}
+  if(upImgs.length>=5){document.getElementById('editImgCt').innerHTML='<span style="color:var(--red)">已达上限5张</span>';input.value='';return;}
+  const r=new FileReader();r.onload=function(e){upImgs.push({name:file.name,url:e.target.result});renderImgPrev();input.value='';};r.readAsDataURL(file);
+}
+function rmImg(i){upImgs.splice(i,1);renderImgPrev();}
+function renderImgPrev(){
+  document.getElementById('editImgPrev').innerHTML=upImgs.map((m,i)=>
+    `<div style="position:relative;display:inline-block"><img src="${m.url}"><span onclick="rmImg(${i})" style="position:absolute;top:-4px;right:-4px;width:18px;height:18px;background:var(--red);color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;cursor:pointer">&times;</span></div>`).join('');
+  document.getElementById('editImgCt').textContent=upImgs.length?`已添加 ${upImgs.length}/5 张`:'';
+}
+document.getElementById('editFla').addEventListener('change',function(){
+  const f=this.files[0],st=document.getElementById('editFlaSt');
+  if(!f){st.innerHTML='';upFla=null;return;}
+  if(!f.name.toLowerCase().endsWith('.fla')){st.innerHTML='<span style="color:var(--red)">请选择.fla文件</span>';upFla=null;this.value='';return;}
+  upFla=f;st.innerHTML=`<span class="fla-icon">.fla</span> ${f.name} (${(f.size/1048576).toFixed(2)}MB)`;st.className='upload-status success';
+  const fi=document.getElementById('editFiles'),cur=fi.value.split(',').map(s=>s.trim()).filter(Boolean);
+  if(!cur.includes('fla')){cur.push('fla');fi.value=cur.join(',');}
+});
+async function doSaveItem(){
+  const name=document.getElementById('editName').value.trim(),cat=document.getElementById('editCat').value;
+  const filesStr=document.getElementById('editFiles').value.trim(),isNew=document.getElementById('editIsNew').checked;
+  const msg=document.getElementById('editMsg');
+  if(!name){msg.textContent='请输入名称';msg.style.color='var(--red)';return;}
+  const files=filesStr.split(',').map(f=>f.trim().replace(/^\./,'')).filter(Boolean);
+  const img=upImgs.length>0?upImgs[0].name:null;
+  const imgs=upImgs.length>0?upImgs.map(m=>m.name):null;
+  const cls=['#2d5a27,#4a8c3f,#7bc86c','#8b1a1a,#d4380d,#ff7a45','#831843,#ec4899,#fbcfe8','#374151,#6b7280,#d1d5db','#1e3a5f,#3b82f6,#bfdbfe'];
+  const rc=cls[Math.floor(Math.random()*cls.length)].split(',');
+  const grad=`linear-gradient(160deg,${rc[0]},${rc[1]},${rc[2]})`;
+
+  if(editingId!==null){
+    const c=characters.find(x=>x.id===editingId);if(!c)return;
+    const updated={...c,name,cat,files,isNew};
+    if(img)updated.img=img;
+    if(imgs)updated.imgs=imgs;
+    const res=await fetch('/api/chars',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({action:'update',char:updated,adminUser:currentUser.username})});
+    const data=await res.json();
+    if(!data.ok){msg.textContent=data.msg;msg.style.color='var(--red)';return;}
+    msg.textContent='保存成功！';msg.style.color='#10b981';
+  }else{
+    const newChar={name,isNew,cat,grad,files,img,imgs,fla:upFla?upFla.name:null};
+    const res=await fetch('/api/chars',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({action:'add',char:newChar,adminUser:currentUser.username})});
+    const data=await res.json();
+    if(!data.ok){msg.textContent=data.msg;msg.style.color='var(--red)';return;}
+    msg.textContent='新增成功！';msg.style.color='#10b981';
+  }
+  await loadChars();renderCards();setTimeout(()=>closeModal('editModal'),600);
+}
+async function delItem(id){const c=characters.find(x=>x.id===id);if(!c)return;
+  if(!confirm('确认删除「'+c.name+'」？'))return;
+  await fetch('/api/chars',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({action:'delete',char:{id},adminUser:currentUser.username})});
+  await loadChars();renderCards();
+}
+
+// === REQUEST ===
+document.getElementById('reqImg').addEventListener('change',function(){
+  const files=Array.from(this.files),p=document.getElementById('reqPrev');
+  if(files.length>5){p.innerHTML='<span style="color:var(--red)">最多5张</span>';this.value='';return;}
+  p.innerHTML='';files.forEach(f=>{const r=new FileReader();r.onload=e=>{p.innerHTML+=`<img src="${e.target.result}">`};r.readAsDataURL(f);});
+});
+function doRequest(){
+  const d=document.getElementById('requestDesc').value.trim(),c=document.getElementById('requestContact').value.trim(),msg=document.getElementById('requestMsg');
+  if(!d){msg.textContent='请填写描述';msg.style.color='var(--red)';return;}
+  if(!c){msg.textContent='请填写联系方式';msg.style.color='var(--red)';return;}
+  msg.textContent='提交成功！我们会尽快联系您。';msg.style.color='#10b981';setTimeout(()=>closeModal('requestModal'),1200);
+}
+
+// === TABS ===
+document.querySelectorAll('.cat-btn').forEach(b=>b.addEventListener('click',()=>{
+  document.querySelectorAll('.cat-btn').forEach(x=>x.classList.remove('active'));b.classList.add('active');
+  currentCat=b.dataset.cat;document.getElementById('searchInput').value='';renderCards();
+}));
+document.querySelectorAll('.sub-tab').forEach(b=>b.addEventListener('click',()=>{
+  document.querySelectorAll('.sub-tab').forEach(x=>x.classList.remove('active'));b.classList.add('active');
+}));
+
+// === CAROUSEL ===
+function cGo(n){cCur=((n%3)+3)%3;document.getElementById('carouselTrack').style.transform=`translateX(-${cCur*100}%)`;
+  document.querySelectorAll('.carousel-dot').forEach((d,i)=>d.classList.toggle('active',i===cCur));
+  clearInterval(cTimer);cTimer=setInterval(()=>cGo(cCur+1),4000);}
+document.querySelectorAll('.carousel-dot').forEach(d=>d.addEventListener('click',()=>cGo(+d.dataset.i)));
+cTimer=setInterval(()=>cGo(cCur+1),4000);
+
+// === LOAD DATA ===
+async function loadChars(){
+  const res=await fetch('/api/chars');
+  characters=await res.json();
+}
+
+// === INIT ===
+(async function(){
+  currentUser=getSess();
+  await loadChars();
+  updateUI();renderCards();
+})();
+</script>
+</body>
+</html>
